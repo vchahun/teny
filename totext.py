@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import sys
-import lxml.etree as et
+from safexml import iterparse
 
 def main(lang):
-    for _, element in et.iterparse(sys.stdin):
+    for _, element in iterparse(sys.stdin, 'file'):
         if element.tag == 's':
             sentence = element.text
         elif element.tag == 'text':
